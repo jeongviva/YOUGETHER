@@ -1,4 +1,4 @@
-package com.yougether.bd;
+package com.yougether.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
