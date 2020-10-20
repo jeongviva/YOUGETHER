@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource"
+	 <!--Root Context: defines shared resources visible to all other web components-->
+	<!--<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
-			<value>oracle.jdbc.driver.OracleDriver</value>
+			<value>net.sf.log4jdbc.sql.jdbcapi.DriverSpy</value>
 		</property>
 		<property name="url">
-			<value>jdbc:oracle:thin:@localhost:1521:xe</value>
+			<value>jdbc:log4jdbc:oracle:thin:@localhost:1521:xe</value>
 		</property>
 		<property name="username">
 			<value>yougether</value>
@@ -21,10 +23,33 @@
 	</bean>	
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="com.yougether.model" />
+		&lt;!&ndash;<property name="typeAliasesPackage" value="com.yougether.model" />&ndash;&gt;
 		<property name="mapperLocations" value="classpath:com/yougether/model/*.xml" />
 	</bean>
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>		
+	</bean>-->
+
+	<context:annotation-config/>
+
+	<!--Hikari CP-->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<!-- <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>-->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="yougether"/>
+		<property name="password" value="yougether"/>
+	</bean>
+
+	<!--HikariCP Configuration-->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<mybatis-spring:scan base-package="com.yougether.mapper"/>
+
 </beans>

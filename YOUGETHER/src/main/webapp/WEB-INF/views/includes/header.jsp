@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +23,8 @@
     <link rel="stylesheet" href="/resources/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/resources/assets/css/app.css">
     <link rel="shortcut icon" href="/resources/assets/images/favicon.svg" type="image/x-icon">
+
+
 </head>
 <body>
 <div id="app">
@@ -347,6 +352,7 @@
     </div>
     <!-- end sidebar -->
 
+    <!-- Start NavBar -->
     <div id="main">
         <nav class="navbar navbar-header navbar-expand navbar-light">
             <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
@@ -390,25 +396,51 @@
                             <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
                             <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                            <a class="dropdown-item" href="/member/logout"><i data-feather="log-out"></i> Logout</a>
                         </div>
                     </li>
+
+                    <!-- 회원 프로필 -->
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <div class="avatar mr-1">
                                 <img src="/resources/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                             </div>
-                            <div class="d-none d-md-block d-lg-inline-block">Hi, Saugi</div>
+
+                            <!-- 유저 이름 로그인 안 한 경우 -->
+                            <sec:authorize access="isAnonymous()">
+                                <div class="d-none d-md-block d-lg-inline-block">♥우철잉♥</div>
+                            </sec:authorize>
+
+                            <!-- 유저 이름 로그인 한 경우 -->
+                            <sec:authorize access="isAuthenticated()">
+                             <div class="d-none d-md-block d-lg-inline-block"><sec:authentication property="principal.member.userid"/></div>
+                            </sec:authorize>
+
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
+
                             <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
                             <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+
+                            <!-- 로그인 안한 경우 로그인 버튼 표시 -->
+                            <sec:authorize access="isAnonymous()">
+                                <a class="dropdown-item" href="/member/loginForm"><i data-feather="user"></i> 로그인</a>
+                            </sec:authorize>
+
+                            <!-- 로그인 한 경우 로그아웃 표시 -->
+                            <sec:authorize access="isAuthenticated()">
+                                <form action="/member/logout" method="post">
+                                    <a class="dropdown-item" id="logoutBtn" href="/member/logout"><i data-feather="log-out"></i> Logout</a>
+                                   <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                    <i data-feather="log-out"><input class="dropdown-item-text" type="submit" value="logout"></i>--%>
+                                </form>
+                            </sec:authorize>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
-        <!-- end nav -->
+        <!-- End NavBar -->
