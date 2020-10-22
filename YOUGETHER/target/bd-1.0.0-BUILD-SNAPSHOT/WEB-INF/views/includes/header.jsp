@@ -25,8 +25,11 @@
     <link rel="shortcut icon" href="/resources/assets/images/favicon.svg" type="image/x-icon">
 
 
+
+
 </head>
 <body>
+
 <div id="app">
     <div id="sidebar" class='active'>
         <div class="sidebar-wrapper active">
@@ -432,10 +435,10 @@
 
                             <!-- 로그인 한 경우 로그아웃 표시 -->
                             <sec:authorize access="isAuthenticated()">
-                                <form action="/member/logout" method="post">
-                                    <a class="dropdown-item" id="logoutBtn" href="/member/logout"><i data-feather="log-out"></i> Logout</a>
-                                   <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                    <i data-feather="log-out"><input class="dropdown-item-text" type="submit" value="logout"></i>--%>
+                                <form action="/member/logout" method="post" id="logoutForm" class="dropdown-item">
+                                    <%--<a class="dropdown-item" id="logoutBtn"><i data-feather="log-out"></i> Logout</a>--%>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                        <%--<i data-feather="log-out"></i>--%><button type="submit" class="btn btn-outline-link">로그아웃</button>
                                 </form>
                             </sec:authorize>
                         </div>
@@ -443,4 +446,7 @@
                 </ul>
             </div>
         </nav>
+
+
+
         <!-- End NavBar -->

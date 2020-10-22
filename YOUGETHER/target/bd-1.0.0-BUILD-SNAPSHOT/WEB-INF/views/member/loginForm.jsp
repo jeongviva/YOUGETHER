@@ -30,9 +30,9 @@
                 <div class="card pt-4">
                     <div class="card-body">
                         <div class="text-center mb-5">
-                            <a href="/"><img src="/resources/assets/images/favicon.svg" height="48" class='mb-4'></a>
+                            <a href="/"><img src="/resources/assets/images/logo/yougether-logo-3.jpg" height="48" class='mb-4'></a>
                             <h3>Sign In</h3>
-                            <p>Please sign in to continue to Voler.</p>
+                            <p>Please sign in to continue to Yougether.</p>
                         </div>
                         <form action="/login" method="post">
                             <div class="form-group position-relative has-icon-left">
@@ -61,7 +61,7 @@
 
                             <div class='form-check clearfix my-4'>
                                 <div class="checkbox float-left">
-                                    <input type="checkbox" id="checkbox1" class='form-check-input' name="remember-me" >
+                                    <input type="checkbox" id="checkbox1" class='form-check-input' name="remember-me">
                                     <label for="checkbox1">Remember me</label>
                                 </div>
                                 <div class="float-right">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <button class="btn btn-primary float-right">Submit</button>
+                                <button class="btn btn-primary float-right">Login</button>
                             </div>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                         </form>
@@ -78,11 +78,16 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <button class="btn btn-block mb-2 btn-primary"><i data-feather="facebook"></i> Facebook</button>
+                                <%--<button class="btn btn-link">  기존 페이스북 로그인 버튼 --%>
+                                    <%--<i data-feather="facebook"></i> google--%>
+                                    <a href=""> <img src="/resources/assets/images/google-login-btn.png"> <!-- 구글 로그인 버튼 이미지 --></a>
+                                    <%--</button>--%>
                             </div>
-                            <div class="col-sm-6">
+
+                            <%-- 깃헙 로그인인
+                           <div class="col-sm-6">
                                 <button class="btn btn-block mb-2 btn-secondary"><i data-feather="github"></i> Github</button>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                 </div>

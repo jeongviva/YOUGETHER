@@ -31,5 +31,6 @@
 <script src="/resources/assets/js/pages/dashboard.js"></script>
 
 <script src="/resources/assets/js/main.js"></script>
+
 </body>
 </html>

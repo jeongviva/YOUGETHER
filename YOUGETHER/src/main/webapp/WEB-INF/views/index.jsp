@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<!-- include header.jsp -->
 <%@ include file="includes/header.jsp"%>
 
         <!-- Start Main Content -->
@@ -283,6 +284,8 @@
             </section>
         </div>
         <!-- End Main Content -->
+
+
 
         <!-- include Footer -->
         <%@ include file="includes/footer.jsp"%>
