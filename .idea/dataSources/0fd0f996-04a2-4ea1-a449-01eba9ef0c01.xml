@@ -60,8 +60,8 @@
     <schema id="19" parent="1" name="YOUGETHER">
       <ObjectId>48</ObjectId>
       <CreatedTimestamp>2020-10-20.08:34:47</CreatedTimestamp>
-      <ModifiedTimestamp>2020-10-21.06:08:43</ModifiedTimestamp>
-      <IntrospectionTimestamp>2020-10-21.06:08:44</IntrospectionTimestamp>
+      <ModifiedTimestamp>2020-11-04.00:32:33</ModifiedTimestamp>
+      <IntrospectionTimestamp>2020-11-04.00:32:33</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <table id="20" parent="19" name="PERSISTENT_LOGINS">
@@ -73,7 +73,7 @@
     <table id="21" parent="19" name="TBL_MEMBER">
       <ObjectId>20063</ObjectId>
       <CreatedTimestamp>2020-10-20.08:34:47</CreatedTimestamp>
-      <ModifiedTimestamp>2020-10-20.08:34:47</ModifiedTimestamp>
+      <ModifiedTimestamp>2020-11-04.00:32:33</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="22" parent="19" name="TBL_MEMBER_AUTH">
@@ -149,7 +149,11 @@
       <DataType>CHAR(1 byte)|0s</DataType>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <index id="35" parent="21" name="SYS_C007002">
+    <column id="35" parent="21" name="EMAIL">
+      <Position>7</Position>
+      <DataType>VARCHAR2(100 byte)|0s</DataType>
+    </column>
+    <index id="36" parent="21" name="SYS_C007002">
       <ObjectId>20064</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2020-10-20.08:34:47</CreatedTimestamp>
@@ -158,7 +162,7 @@
       <ColNames>USERID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="36" parent="21" name="SYS_C007002">
+    <key id="37" parent="21" name="SYS_C007002">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2020-10-20.08:34:47</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
@@ -166,17 +170,17 @@
       <UnderlyingIndexName>SYS_C007002</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="37" parent="22" name="USERID">
+    <column id="38" parent="22" name="USERID">
       <Position>1</Position>
       <DataType>VARCHAR2(50 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="38" parent="22" name="AUTH">
+    <column id="39" parent="22" name="AUTH">
       <Position>2</Position>
       <DataType>VARCHAR2(50 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <foreign-key id="39" parent="22" name="FK_MEMBER_AUTH">
+    <foreign-key id="40" parent="22" name="FK_MEMBER_AUTH">
       <ModifiedTimestamp>2020-10-20.08:35:48</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
       <RefTableName>TBL_MEMBER</RefTableName>

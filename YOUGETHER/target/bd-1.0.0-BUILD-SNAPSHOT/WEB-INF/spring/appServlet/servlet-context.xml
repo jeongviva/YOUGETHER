@@ -20,6 +20,20 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
+	 <!--google 인증 관련 Bean 설정 -->
+	<beans:bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<!-- 클라이언트 id -->
+		<beans:constructor-arg value="1010191238926-ie0jhdpqkslrscmobjkceee4dpo3jp6k.apps.googleusercontent.com"/>
+
+		<!-- 클라이언트 비밀번호 -->
+		<beans:constructor-arg value="hpR9kgdXsNpYDLSspJERMwcC"/>
+	</beans:bean>
+	<!-- google 승인된 리디렉션 URI -->
+	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<beans:property name="scope" value="https://www.googleapis.com/auth/plus.login" />
+		<beans:property name="redirectUri" value="http://localhost:8080/join/google/auth"/>
+	</beans:bean>
 	
 	<context:component-scan base-package="com.yougether.controller" />
 

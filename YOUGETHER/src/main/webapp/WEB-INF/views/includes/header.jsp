@@ -424,13 +424,14 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
 
-                            <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Messages</a>
+                            <a class="dropdown-item" href="#"><i data-feather="mail"></i> Messages</a>
                             <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
                             <div class="dropdown-divider"></div>
 
                             <!-- 로그인 안한 경우 로그인 버튼 표시 -->
                             <sec:authorize access="isAnonymous()">
                                 <a class="dropdown-item" href="/member/loginForm"><i data-feather="user"></i> 로그인</a>
+                                <a class="dropdown-item" href="/member/joinForm"><i data-feather="user"></i> 회원가입</a>
                             </sec:authorize>
 
                             <!-- 로그인 한 경우 로그아웃 표시 -->

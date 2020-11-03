@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/member/")
 public class MemberController {
 
-
+    /* 로그인 폼으로 이동 */
     @GetMapping("/loginForm")
     public String loginForm() {
 
@@ -26,6 +26,7 @@ public class MemberController {
         return "member/loginForm";
     }
 
+    /* 로그아웃 */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -35,6 +36,15 @@ public class MemberController {
         }
         return "redirect:/";
     }
+
+
+    /* 회원가입 폼으로 이동 */
+    @GetMapping("/joinForm")
+    public String joinForm() {
+
+        return "member/joinForm";
+    }
+
 
 
 }

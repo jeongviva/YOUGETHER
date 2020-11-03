@@ -65,7 +65,7 @@
                                     <label for="checkbox1">Remember me</label>
                                 </div>
                                 <div class="float-right">
-                                    <a href="auth-register.html">Don't have an account?</a>
+                                    <a href="/member/joinForm">Don't have an account?</a>
                                 </div>
                             </div>
                             <div class="clearfix">
@@ -73,22 +73,22 @@
                             </div>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                         </form>
-                        <div class="divider">
+                        <%--<div class="divider">
                             <div class="divider-text">OR</div>
-                        </div>
-                        <div class="row">
+                        </div>--%>
+                        <%--<div class="row">
                             <div class="col-sm-6">
-                                <%--<button class="btn btn-link">  기존 페이스북 로그인 버튼 --%>
-                                    <%--<i data-feather="facebook"></i> google--%>
-                                    <a href=""> <img src="/resources/assets/images/google-login-btn.png"> <!-- 구글 로그인 버튼 이미지 --></a>
-                                    <%--</button>--%>
+                                <button class="btn btn-link">  기존 페이스북 로그인 버튼
+                                    <i data-feather="facebook"></i> google
+                                    <a href=""> <img src="/resources/assets/images/google-login-btn.png">
+                                    </button>
                             </div>
 
-                            <%-- 깃헙 로그인인
+                             깃헙 로그인인
                            <div class="col-sm-6">
                                 <button class="btn btn-block mb-2 btn-secondary"><i data-feather="github"></i> Github</button>
-                            </div>--%>
-                        </div>
+                            </div>
+                        </div>--%>
                     </div>
                 </div>
             </div>
